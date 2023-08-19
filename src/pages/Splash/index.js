@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { useNavigation } from '@react-navigation/native';
 
 
 import { slides } from '../../components/slider';
@@ -8,7 +9,10 @@ import Onbordning from '../../components/Onbordning';
 
 
 export default function Splash() {
- return (
+ 
+    const navigation = useNavigation();
+ 
+    return (
         <AppIntroSlider
             renderItem={ Onbordning  }
             data={slides}
@@ -21,7 +25,7 @@ export default function Splash() {
             }}
             renderNextButton={ () => <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>Próximo</Text> }
             renderDoneButton={ () => <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>Entrar</Text> }
-            onDone={ () => alert('Entrou')}
+            onDone={ () => navigation.navigate('Login')}
         />
   );
 }

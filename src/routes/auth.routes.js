@@ -18,8 +18,22 @@ export default function AuthRoutes(){
                 }} 
             />
     
-            <AuthStack.Screen name='Login' component={Login} />
-            <AuthStack.Screen name='Cadastro' component={Cadastro} />
+            <AuthStack.Screen 
+                name='Login' 
+                component={Login}
+                options={{
+                    headerShown: false,
+                }} 
+            />
+
+            <AuthStack.Screen 
+                name='Cadastro' 
+                component={Cadastro}
+                options={{
+                    headerShown: false,
+                }} 
+            
+            />
         </AuthStack.Navigator>
     )
 }
