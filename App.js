@@ -1,10 +1,16 @@
-import React from 'react';
-import { View } from 'react-native';
-import Splash from './src/pages/Splash';
+import { StatusBar } from 'react-native';
 
+//Provider
 
-export default function App() {
- return (
-    <Splash/>
-  );
+import Routes from './src/routes';
+
+import { NavigationContainer } from '@react-navigation/native';
+
+export default function App(){
+  return(
+    <NavigationContainer>
+      <StatusBar backgroundColor={"transparent"} barStyle={'light-content'} translucent={true} />
+      <Routes/>
+    </NavigationContainer>
+  )
 }
