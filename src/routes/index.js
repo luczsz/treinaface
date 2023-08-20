@@ -1,14 +1,15 @@
 import React, {useContext} from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
-//Contexto Auth
+import { AuthContext } from '../contexts/auth';
+
 
 import AuthRoutes from './auth.routes';
-//App Routes
+import AppRoutes from './app.routes';
 
 export default function Routes(){
-    // contexto - lodingo
+    const { signed } = useContext(AuthContext);
     return(
-        <AuthRoutes/>
+        signed ? <AppRoutes /> : <AuthRoutes  />
     )
 }
