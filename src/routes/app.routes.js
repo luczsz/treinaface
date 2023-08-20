@@ -6,6 +6,8 @@ import { theme } from '../global/theme';
 import { AntDesign } from '@expo/vector-icons';
 
 import Home from '../pages/Home';
+import Account from '../pages/Account';
+
 
 export default function AppRoutes(){
     
@@ -49,7 +51,7 @@ export default function AppRoutes(){
                 />
                 <TabsStack.Screen 
                     name='User' 
-                    component={Home}
+                    component={Account}
                     options={{
                         headerShown: false,
                         tabBarIcon: ({focused}) => {

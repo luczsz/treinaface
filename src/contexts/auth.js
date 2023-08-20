@@ -19,6 +19,19 @@ export default function AuthProvaider({ children }){
 
 
     // Analisar usuario logado
+    useEffect( () => {
+        async function loadDados(){
+          const storageUser = await AsyncStorage.getItem('Auth_user');
+  
+          if(storageUser){
+              setUser(JSON.parse(storageUser));
+          }
+        };
+        loadDados();
+        console.log(user);
+      },[]) 
+  
+
     // Logando usuario
     async function SingIn(email, senha){
         setLoading(false);
@@ -40,7 +53,7 @@ export default function AuthProvaider({ children }){
                 id: userData.id,
               };
               setUser(data);
-              //storageUser(data);
+              storageUser(data);
               setLoading(true);
 
             } else {
@@ -98,12 +111,34 @@ export default function AuthProvaider({ children }){
     }
 
     // Deslogando  usuario
-        
+    async function SingOut(){
+        const auth = getAuth(firebaseConfig);
+        signOut(auth)
+        .then( async () => {
+            await AsyncStorage.clear()
+            .then( () => {
+                setUser(null);
+                console.log('certinhos');
+            })
+            .catch( (error) => {
+                console.log('não deu' + error);
+            })
+
+            return;
+        })
+        .catch( (error) => {
+            console.log('error ao deslogar', error);
+            return;
+        })
+    }
 
     // Dadado offline do  usuario
+    async function storageUser(data){
+        await AsyncStorage.setItem('Auth_user', JSON.stringify(data));
+      }
 
     return(
-        <AuthContext.Provider value={{ signed: !user, user, loading, SingIn, SingUp  }}>
+        <AuthContext.Provider value={{ signed: !user, user, loading, SingIn, SingUp, SingOut  }}>
             {children}
         </AuthContext.Provider>
     );
