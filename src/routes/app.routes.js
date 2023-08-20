@@ -16,7 +16,25 @@ export default function AppRoutes(){
 
     function Tabs(){
         return(
-            <TabsStack.Navigator>
+            <TabsStack.Navigator
+
+            screenOptions={{
+                tabBarShowLabel: false,
+                tabBarStyle:{
+                    position: 'absolute',
+                    backgroundColor: '#f5f5f5',
+
+                    borderTopWidth: 0,
+
+                    //bottom: 14,
+                    elevation: 0,
+                    //borderRadius: 4,
+                    height: 70,
+                                
+                }
+            }}
+            
+            >
                 <TabsStack.Screen 
                     name='Home' 
                     component={Home}
@@ -26,7 +44,7 @@ export default function AppRoutes(){
                             if(focused){
                                 return <AntDesign name="home" size={24} color={theme.colors.primary} />
                             }
-                                return <AntDesign name="home" size={24} color="#DDD" />
+                                return <AntDesign name="home" size={24} color={theme.colors.secondary} />
         
                             }
                         }
@@ -42,7 +60,7 @@ export default function AppRoutes(){
                             if(focused){
                                 return <AntDesign name="enviroment" size={24} color={theme.colors.primary} />
                             }
-                                return <AntDesign name="enviromento" size={24} color="#DDD" />
+                                return <AntDesign name="enviromento" size={24} color={theme.colors.secondary} />
         
                             }
                         }
@@ -58,7 +76,7 @@ export default function AppRoutes(){
                             if(focused){
                                 return <AntDesign name="user" size={24} color={theme.colors.primary} />
                             }
-                                return <AntDesign name="user" size={24} color="#DDD" />
+                                return <AntDesign name="user" size={24} color={theme.colors.secondary} />
         
                             }
                         }
@@ -71,7 +89,13 @@ export default function AppRoutes(){
 
     return(
         <AppStack.Navigator>
-            <AppStack.Screen name='Inicio' component={Tabs} />
+            <AppStack.Screen 
+                name='Inicio' 
+                component={Tabs}
+                options={{
+                    headerShown: false,
+                }} 
+            />
         </AppStack.Navigator>
     )
 }
