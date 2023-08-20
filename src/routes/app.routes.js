@@ -7,6 +7,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import Home from '../pages/Home';
 import Account from '../pages/Account';
+import Progress from '../pages/Progress';
 
 
 export default function AppRoutes(){
@@ -52,8 +53,8 @@ export default function AppRoutes(){
                 
                 />
                 <TabsStack.Screen 
-                    name='Second' 
-                    component={Home}
+                    name='Progress' 
+                    component={Progress}
                     options={{
                         headerShown: false,
                         tabBarIcon: ({focused}) => {
