@@ -1,19 +1,56 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, Image, TouchableOpacity } from 'react-native';
+
+import { styles } from './style';
+import ProfileIdoso from '../../assets/7.jpg';
+import { AntDesign } from '@expo/vector-icons';
+import { theme } from '../../global/theme';
+
 
 import { AuthContext } from '../../contexts/auth';
 
 export default function Account() {
     
-    const { SingOut } = useContext(AuthContext);
+    const { user, SingOut } = useContext(AuthContext);
     
 return (
-   <View>
-        <Text>USER DADOS</Text>
-        <Button
-            title='LOGOUT'
-            onPress={ () => SingOut()}
-        />
+   <View style={styles.container} >
+        <View style={styles.header} >
+            <Image
+                source={ProfileIdoso}
+                style={styles.profile}
+            />
+            
+            <Text style={styles.username}> {user.nome} </Text>
+            <Text style={styles.useremail} > {user.email} </Text>
+        </View>
+
+        <View style={styles.content} >
+        
+            <TouchableOpacity style={styles.menuItem} >
+                <AntDesign name='user' size={25} color={theme.colors.secondary} />
+                <Text style={[styles.username, {textTransform: 'uppercase'}]}>Seus dados</Text>
+            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.menuItem} >
+                <AntDesign name='Safety' size={25} color={theme.colors.secondary} />
+                <Text style={[styles.username, {textTransform: 'uppercase'}]}>Politica e Privacidade</Text>
+            </TouchableOpacity>
+        
+        </View>
+
+        <View style={styles.footer} >
+
+            <TouchableOpacity 
+                style={{flexDirection: 'row', gap: 10, alignItems: 'center', justifyContent: 'center'}} 
+                onPress={ () => SingOut()}
+            >
+                <AntDesign name='logout' size={24} color={theme.colors.secondary} />
+                <Text style={styles.username} >
+                    SAIR
+                </Text>
+            </TouchableOpacity>
+        </View>
    </View>
   );
 }
