@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     title:{
-        fontSize: 70,
+        fontSize: 45,
         fontWeight: 'bold',
         color: theme.colors.white090,
         textTransform: 'uppercase'

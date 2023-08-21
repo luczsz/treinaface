@@ -9,6 +9,9 @@ import Home from '../pages/Home';
 import Account from '../pages/Account';
 import Progress from '../pages/Progress';
 
+//Niveis
+import Basic from '../pages/Basic';
+
 
 export default function AppRoutes(){
     
@@ -97,6 +100,8 @@ export default function AppRoutes(){
                     headerShown: false,
                 }} 
             />
+
+            <AppStack.Screen name='One' component={Basic} />
         </AppStack.Navigator>
     )
 }

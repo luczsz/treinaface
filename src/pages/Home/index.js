@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+
+import { useNavigation } from '@react-navigation/native'
 
 
 import { styles } from './style';
@@ -8,7 +9,10 @@ import Header from '../../components/Header';
 import { theme } from '../../global/theme';
 
 export default function Home() {
- return (
+
+  const navigate = useNavigation();
+
+  return (
    <View>
         <Header/>
         <View style={styles.content} >
@@ -20,6 +24,7 @@ export default function Home() {
           <TouchableOpacity
             activeOpacity={0.7}
             style={[styles.button, {backgroundColor: theme.colors.primary }]}
+            onPress={ () => navigate.navigate('One')}
           >
             <Text style={styles.title} >
               básico
@@ -31,7 +36,7 @@ export default function Home() {
             style={[styles.button, {backgroundColor: theme.colors.secondary }]}
           >
             <Text style={styles.title}>
-              Médio
+              Intermediario
             </Text>
           </TouchableOpacity>
 
