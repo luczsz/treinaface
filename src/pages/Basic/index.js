@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Modal} from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, TouchableOpacity, Modal, Pressable} from 'react-native';
+import { Video } from 'expo-av';
 
 import firebaseConfig from '../../services/firebaseConnection';
 
@@ -19,6 +20,15 @@ export default function Basic() {
   const [titulo, setTitulo] = useState([]);
   const [descrição, setDescrição] = useState([]);
   const [url, setUrl] = useState([]);
+
+  const video = useRef(null);
+  const [status, setStatus] = useState({});
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  function handlePlayer(){
+    status.isPlaying ? video.current?.pauseAsync() : video.current?.playAsync()
+  }
 
   useEffect( () => {
       async function loadingDados(){
@@ -44,6 +54,7 @@ export default function Basic() {
           })
         })
       };
+
       loadingDados();
   },[]);
 
@@ -97,11 +108,21 @@ export default function Basic() {
             </TouchableOpacity>
           </View>
           <View style={styled.modalContent} >
-            <View style={styled.modalUrl} >
-              <Text>VIDEO</Text>
-            </View>
+            <Pressable onPress={handlePlayer} style={styled.modalUrl} >
+              <Video
+                ref={video}
+                shouldPlay={false}
+                isMuted={false}
+                source={{ uri: url }}
+                style={{ width: '100%', height: '100%', borderRadius: 8, }}
+                resizeMode="cover"
+                isLooping
+                onPlaybackStatusUpdate={ status => {setStatus( () => status )}}
+                
+              />
+            </Pressable>
             <Text>
-              {titulo}
+              {titulo} + {url} + {isVideoLoaded}
             </Text>
 
           </View>
