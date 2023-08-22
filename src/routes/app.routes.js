@@ -101,7 +101,13 @@ export default function AppRoutes(){
                 }} 
             />
 
-            <AppStack.Screen name='One' component={Basic} />
+            <AppStack.Screen 
+                name='One' 
+                component={Basic}
+                options={{
+                    headerShown: false,
+                }} 
+            />
         </AppStack.Navigator>
     )
 }
