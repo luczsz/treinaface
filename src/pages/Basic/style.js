@@ -40,6 +40,49 @@ export const styles = StyleSheet.create({
     buttonText:{
         fontSize: 55,
         fontWeight: 'bold',
-        color: theme.colors.white090
+        color: theme.colors.white090,
+        textTransform: 'uppercase',
     }
+});
+
+
+export const styled = StyleSheet.create({
+    modalContainer:{
+        flex: 1,
+        backgroundColor: theme.colors.white090,
+    },
+    modalHeader:{
+        height: 300,
+        
+        paddingTop: 23,
+        paddingLeft: 14,
+        paddingRight: 14,
+
+
+    },
+    modalContent:{
+        flex: 1,
+        backgroundColor: theme.colors.primary,
+        padding: 10,
+
+        borderRadius: 12,
+    },
+
+    modalUrl:{
+        backgroundColor: 'grey',
+        width: '80%',
+        height: '70%',
+        zIndex: 99,
+        marginTop: -120,
+        marginLeft: 40,
+        marginBottom: 10,
+
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        borderWidth: 6,
+        borderColor: theme.colors.primary,
+        borderRadius: 10,
+    }
+
 })
