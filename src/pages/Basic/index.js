@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Modal, Pressable} from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Pressable, ActivityIndicator} from 'react-native';
 import { Video } from 'expo-av';
 
 import firebaseConfig from '../../services/firebaseConnection';
@@ -11,7 +11,11 @@ import { theme } from '../../global/theme';
 //Firebase
 import { getDatabase, ref, onValue } from 'firebase/database';
 
+import { useNavigation } from '@react-navigation/native';
+
 export default function Basic() {
+
+  const navigate = useNavigation();
   
   const [open, setOpen] = useState(false);
   const [dados, setDados] = useState([]);
@@ -25,6 +29,11 @@ export default function Basic() {
   const [status, setStatus] = useState({});
 
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingUrl, setLoadingUrl] = useState(true);
+
+  const phrafe = typeof descrição === 'string' ? descrição.split(';') : [];
+
 
   function handlePlayer(){
     status.isPlaying ? video.current?.pauseAsync() : video.current?.playAsync()
@@ -50,6 +59,7 @@ export default function Basic() {
             
 
             setDados(oldArray => [...oldArray, ...list].reverse());
+            setLoading(false);
             //console.log(list);
           })
         })
@@ -73,7 +83,9 @@ export default function Basic() {
   return (
    <View style={styles.container}>
       <View  style={styles.header}>
-        <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
+        <TouchableOpacity onPress={ () => navigate.goBack() } >
+          <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
+        </TouchableOpacity>
       </View>
       
       <View  style={styles.content}>
@@ -81,6 +93,8 @@ export default function Basic() {
         Para melhor execução dos exercícios, relaxe o corpo, posicione-se em frente ao espelho e repita três vezes cada movimento . Agora chegou a sua vez de treinar !
         </Text>
 
+        {loading ? <ActivityIndicator color={theme.colors.secondary} size='large' /> : <></>}
+      
         {dados.map( (item) =>(
           <TouchableOpacity
             key={item.key}
@@ -90,6 +104,8 @@ export default function Basic() {
             <Text style={styles.buttonText} > {item.key} </Text>
           </TouchableOpacity>
         ))}
+      
+
 
       </View>
 
@@ -99,6 +115,7 @@ export default function Basic() {
         animationType='fade'
         onRequestClose={ () => setOpen(false)}     
       >
+
         <View style={styled.modalContainer} >
           <View style={styled.modalHeader}>
             <TouchableOpacity
@@ -108,7 +125,9 @@ export default function Basic() {
             </TouchableOpacity>
           </View>
           <View style={styled.modalContent} >
-            <Pressable onPress={handlePlayer} style={styled.modalUrl} >
+            
+              <Pressable onPress={handlePlayer} style={styled.modalUrl} >
+        
               <Video
                 ref={video}
                 shouldPlay={false}
@@ -117,13 +136,22 @@ export default function Basic() {
                 style={{ width: '100%', height: '100%', borderRadius: 8, }}
                 resizeMode="cover"
                 isLooping
-                onPlaybackStatusUpdate={ status => {setStatus( () => status )}}
+                onPlaybackStatusUpdate={ status => {[setStatus( () => status ),]}
+              }
                 
               />
-            </Pressable>
-            <Text>
-              {titulo} + {url} + {isVideoLoaded}
+              
+              </Pressable>
+            
+
+            <Text style={styled.description} >
+              {titulo}
             </Text>
+            <View>
+            {phrafe.map((phrase, index) => (
+                <Text key={index} style={styled.description} >{phrase}</Text>
+              ))}
+            </View>
 
           </View>
         </View>

@@ -69,7 +69,7 @@ export const styled = StyleSheet.create({
     },
 
     modalUrl:{
-        backgroundColor: 'grey',
+        backgroundColor: theme.colors.secondary,
         width: '80%',
         height: '70%',
         zIndex: 99,
@@ -83,6 +83,12 @@ export const styled = StyleSheet.create({
         borderWidth: 6,
         borderColor: theme.colors.primary,
         borderRadius: 10,
+    },
+
+    description:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: theme.colors.white090,
     }
 
 })
