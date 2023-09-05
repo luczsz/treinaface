@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#2A7CFD"
-      }
+      },
+      "package": "com.lucz.sz.treinaface"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bb02171f-99c8-4f20-b936-568b4388cac9"
+      }
     }
   }
 }

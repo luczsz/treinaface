@@ -89,6 +89,37 @@ export const styled = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         color: theme.colors.white090,
+    },
+
+    finish:{
+        backgroundColor: theme.colors.white090,
+        marginTop: 20,
+        height: 60,
+
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        borderRadius: 12,
+    },
+    textFinish:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: theme.colors.primary,
+    },
+    finishBack:{
+        backgroundColor: theme.colors.tercery,
+        marginTop: 20,
+        height: 60,
+
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        borderRadius: 12,
+    },
+    textFinishBack:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: theme.colors.white090,
     }
 
 })

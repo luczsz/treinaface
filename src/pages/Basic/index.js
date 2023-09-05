@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Modal, Pressable, ActivityIndicator} from 'react-native';
+import { View, Text, TouchableOpacity, Modal, Pressable, ActivityIndicator, ScrollView} from 'react-native';
 import { Video } from 'expo-av';
 
 import firebaseConfig from '../../services/firebaseConnection';
@@ -30,7 +30,7 @@ export default function Basic() {
 
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [loadingUrl, setLoadingUrl] = useState(true);
+  const [time, setTime] = useState(true);
 
   const phrafe = typeof descrição === 'string' ? descrição.split(';') : [];
 
@@ -53,6 +53,7 @@ export default function Basic() {
               titulo: item.val().titulo,
               descrição: item.val().descrição,
               url: item.val().video,
+              status: item.val().status,
             };
             
             const list = [listItem];
@@ -77,8 +78,13 @@ export default function Basic() {
           setDescrição(snap.val().descrição);
           setUrl(snap.val().video);
           setOpen(true);
+          setTime(true);
         })
   }
+
+  setTimeout(() => {
+    setTime(false);
+  }, 15000);
  
   return (
    <View style={styles.container}>
@@ -96,13 +102,15 @@ export default function Basic() {
         {loading ? <ActivityIndicator color={theme.colors.secondary} size='large' /> : <></>}
       
         {dados.map( (item) =>(
+          
           <TouchableOpacity
-            key={item.key}
-            style={styles.button}
-            onPress={() => dates(item.key)}
-          >
-            <Text style={styles.buttonText} > {item.key} </Text>
-          </TouchableOpacity>
+          key={item.key}
+          style={styles.button}
+          onPress={() => dates(item.key)}
+        >
+          <Text style={styles.buttonText} > {item.key} </Text>
+        </TouchableOpacity>
+
         ))}
       
 
@@ -142,16 +150,40 @@ export default function Basic() {
               />
               
               </Pressable>
-            
 
-            <Text style={styled.description} >
-              {titulo}
-            </Text>
-            <View>
-            {phrafe.map((phrase, index) => (
-                <Text key={index} style={styled.description} >{phrase}</Text>
-              ))}
-            </View>
+              
+            <ScrollView>
+              <Text style={styled.description} >
+                {titulo}
+              </Text>
+              <View>
+              {phrafe.map((phrase, index) => (
+                  <Text key={index} style={styled.description} >{phrase}</Text>
+                ))}
+              </View>
+
+                {time?
+                <TouchableOpacity
+                  style={styled.finishBack}
+                  activeOpacity={1}
+                >
+                    
+                  <Text style={styled.textFinishBack}>FINALIZAR</Text>
+                </TouchableOpacity>
+                :
+                <TouchableOpacity
+                  style={styled.finish}
+                  activeOpacity={0.8}
+                >
+                    
+                  <Text style={styled.textFinish}>FINALIZAR</Text>
+                </TouchableOpacity>
+
+
+                }
+                             
+
+            </ScrollView>
 
           </View>
         </View>
