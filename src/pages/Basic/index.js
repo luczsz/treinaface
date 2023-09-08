@@ -22,13 +22,13 @@ export default function Basic() {
   const navigate = useNavigation();
   const { user } = useContext(AuthContext);
   const uid = user.id;
-  
+    
   const [open, setOpen] = useState(false);
   const [openAlert, setOpenAlert] = useState(false);
   const [dados, setDados] = useState([]);
   const [itens, setItens] = useState([]);
 
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(0);
 
   const [titulo, setTitulo] = useState([]);
   const [descrição, setDescrição] = useState([]);
@@ -84,7 +84,7 @@ export default function Basic() {
         } catch (error) {
           console.error('Erro ao carregar', error);
         }
-      }
+      };
 
       loadingDados();
       loadCount();
@@ -103,6 +103,7 @@ export default function Basic() {
         })
   }
 
+  // ESTAGIOS DAS SELEÇÕES
   function transfor(status){
     if(status.status === count){
       setOpenAlert(true);
@@ -136,6 +137,10 @@ export default function Basic() {
     try{
       const newCount = count + 1;
       setCount(newCount);
+      setOpen(false);
+
+      {count == 2? estagioInicio() : setOpenAlert(true)  }
+
 
       await AsyncStorage.setItem('clickCount', newCount.toString());
     } catch (error) {
@@ -143,6 +148,29 @@ export default function Basic() {
     }
   };
 
+  //Concluindo o nível
+  async function estagioInicio(){
+    try{
+      const newCount = count + 1;
+
+      await AsyncStorage.setItem('stagioInicio', newCount.toString());
+    } catch (error) {
+      console.error('Erro ao contar', error);
+    }
+  };
+
+  async function remove(){
+    AsyncStorage.removeItem('clickCount')
+  .then(() => {
+    console.log('Item removido com sucesso.');
+  })
+  .catch((error) => {
+    console.error('Ocorreu um erro ao remover o item:', error);
+  });
+  }
+
+
+  
 
   setTimeout(() => {
     setTime(false);
@@ -151,7 +179,7 @@ export default function Basic() {
   return (
    <View style={styles.container}>
       <View  style={styles.header}>
-        <TouchableOpacity onPress={ () => navigate.goBack() } >
+        <TouchableOpacity onPress={ () => /* remove() */  navigate.goBack()  } >
           <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
         </TouchableOpacity>
           <View style={styles.progress} >
@@ -163,7 +191,7 @@ export default function Basic() {
       
       <View  style={styles.content}>
         <Text style={styles.title} >
-        Para melhor execução dos exercícios, relaxe o corpo, posicione-se em frente ao espelho e repita três vezes cada movimento . Agora chegou a sua vez de treinar !
+        Para melhor execução dos exercícios, relaxe o corpo, posicione-se em frente ao espelho e repita três vezes cada movimento . Agora chegou a sua vez de treinar ! 
         </Text>
 
         {loading ? <ActivityIndicator color={theme.colors.secondary} size='large' /> : <></>}
@@ -255,16 +283,15 @@ export default function Basic() {
                 <TouchableOpacity
                   style={styled.finish}
                   activeOpacity={0.8}
+                  onPress={ () => {count === 3? alert('ok') : startCount() }}
                 >
                     
-                    {count === 3? 
+                    {count === 2? 
                       <Text style={styled.textFinish}>FINALIZAR...</Text>
                       :
                       <Text style={styled.textFinish}>PROSSEGUIR...</Text>
                     } 
                 </TouchableOpacity>
-
-
                 }
                              
 

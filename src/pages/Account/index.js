@@ -1,5 +1,6 @@
 import React, {useState, useContext} from 'react';
 import { View, Text, Button, Image, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './style';
 import ProfileIdoso from '../../assets/7.jpg';
@@ -12,6 +13,7 @@ import { AuthContext } from '../../contexts/auth';
 export default function Account() {
     
     const { user, SingOut } = useContext(AuthContext);
+    const navigate = useNavigation();
     
 return (
    <View style={styles.container} >
@@ -27,7 +29,7 @@ return (
 
         <View style={styles.content} >
         
-            <TouchableOpacity style={styles.menuItem} >
+            <TouchableOpacity style={styles.menuItem} onPress={ () => navigate.navigate('Registros')} >
                 <AntDesign name='user' size={25} color={theme.colors.secondary} />
                 <Text style={[styles.username, {textTransform: 'uppercase'}]}>Seus dados</Text>
             </TouchableOpacity>

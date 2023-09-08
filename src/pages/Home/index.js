@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useNavigation } from '@react-navigation/native'
 
@@ -11,10 +12,25 @@ import { theme } from '../../global/theme';
 export default function Home() {
 
   const navigate = useNavigation();
+  const [count, setCount] = useState(0);
+
+  useEffect( () => {
+    async function loadCount(){
+      try{
+        const savedCount = await AsyncStorage.getItem('stagioInicio');
+        if(savedCount !== null){
+          setCount(parseInt(savedCount));
+        }
+      } catch (error) {
+        console.error('Erro ao carregar', error);
+      }
+    }
+    loadCount();
+  },[])
 
   return (
    <View>
-        <Header/>
+        <Header nivel={count} />
         <View style={styles.content} >
 
         <Text style={{fontSize: 22, fontWeight: '500', color: theme.colors.secondary, marginBottom: 10,}}>

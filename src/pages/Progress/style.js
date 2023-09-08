@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
         gap: 7,
 
         padding: 14,
+        marginBottom: 12,
         backgroundColor: theme.colors.white090,
         borderRadius: 12,
     },

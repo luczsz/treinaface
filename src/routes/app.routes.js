@@ -8,6 +8,7 @@ import { AntDesign } from '@expo/vector-icons';
 import Home from '../pages/Home';
 import Account from '../pages/Account';
 import Progress from '../pages/Progress';
+import Registre from '../pages/Registre';
 
 //Niveis
 import Basic from '../pages/Basic';
@@ -107,6 +108,11 @@ export default function AppRoutes(){
                 options={{
                     headerShown: false,
                 }} 
+            />
+            <AppStack.Screen 
+                name='Registros' 
+                component={Registre}
+
             />
         </AppStack.Navigator>
     )

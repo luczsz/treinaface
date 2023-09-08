@@ -8,7 +8,7 @@ import { Feather } from '@expo/vector-icons';
 import ProfileIdoso from '../../assets/7.jpg';
 import { theme } from '../../global/theme';
 
-export default function Header() {
+export default function Header({nivel}) {
 
     const { user } = useContext(AuthContext);
 
@@ -44,7 +44,9 @@ export default function Header() {
             
             <View style={{ flex: 1, paddingLeft: 10, height: 60}} >
                 <Text style={styles.username} >Olá, {user.nome} </Text>
-                <Text style={styles.usernivel} >Nivel 1</Text>
+                <Text style={styles.usernivel} >
+                  {nivel !== 1? 'Nível 1 - Concluido' : 'Nível 1 - em Progresso' }
+                </Text>
                 
             </View>
             
