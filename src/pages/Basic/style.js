@@ -8,9 +8,11 @@ export const styles = StyleSheet.create({
         backgroundColor: theme.colors.white090,
     },
     header:{
+        flexDirection: 'row',
         marginTop: 32,
         height: 90,
-        justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         paddingLeft: 14,
         paddingRight: 14,
 
@@ -42,6 +44,26 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: theme.colors.white090,
         textTransform: 'uppercase',
+    },
+
+    progress:{
+        backgroundColor: theme.colors.primary,
+        padding: 10,
+        borderRadius: 12,
+
+        alignItems: 'center',
+        justifyContent: 'center',
+
+    },
+
+    progressTitle:{
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: theme.colors.white090
+    },
+    progressSubTitle:{
+        fontSize: 14,
+        color: theme.colors.white090
     }
 });
 
@@ -117,6 +139,39 @@ export const styled = StyleSheet.create({
         borderRadius: 12,
     },
     textFinishBack:{
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: theme.colors.white090,
+    }, 
+
+    containerAlert:{
+        backgroundColor: theme.colors.overlay,
+        flex: 1,
+
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    contentAlert:{
+        backgroundColor: theme.colors.primary,
+        padding: 14,
+
+        width: '80%',
+
+        borderRadius: 12,
+    },
+    headerAlert:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 10,
+    },
+    textAlert:{
+        paddingTop: 20,
+
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    titleAlert:{
         fontSize: 22,
         fontWeight: 'bold',
         color: theme.colors.white090,

@@ -1,25 +1,34 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { View, Text, TouchableOpacity, Modal, Pressable, ActivityIndicator, ScrollView} from 'react-native';
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { View, Text, TouchableOpacity, Modal, Pressable, ActivityIndicator, ScrollView, FlatList} from 'react-native';
 import { Video } from 'expo-av';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import firebaseConfig from '../../services/firebaseConnection';
+import { AuthContext } from '../../contexts/auth';
+
 
 import { styles, styled } from './style';
-import { Feather } from '@expo/vector-icons';
+import { Feather, Entypo } from '@expo/vector-icons';
 import { theme } from '../../global/theme';
+import ListSelect from '../../components/ListSelect';
 
 //Firebase
-import { getDatabase, ref, onValue } from 'firebase/database';
+import firebaseConfig from '../../services/firebaseConnection';
+import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 import { useNavigation } from '@react-navigation/native';
 
 export default function Basic() {
 
   const navigate = useNavigation();
+  const { user } = useContext(AuthContext);
+  const uid = user.id;
   
   const [open, setOpen] = useState(false);
+  const [openAlert, setOpenAlert] = useState(false);
   const [dados, setDados] = useState([]);
   const [itens, setItens] = useState([]);
+
+  const [count, setCount] = useState(3);
 
   const [titulo, setTitulo] = useState([]);
   const [descrição, setDescrição] = useState([]);
@@ -66,7 +75,19 @@ export default function Basic() {
         })
       };
 
+      async function loadCount(){
+        try{
+          const savedCount = await AsyncStorage.getItem('clickCount');
+          if(savedCount !== null){
+            setCount(parseInt(savedCount));
+          }
+        } catch (error) {
+          console.error('Erro ao carregar', error);
+        }
+      }
+
       loadingDados();
+      loadCount();
   },[]);
 
   async function dates(key){
@@ -82,6 +103,47 @@ export default function Basic() {
         })
   }
 
+  function transfor(status){
+    if(status.status === count){
+      setOpenAlert(true);
+      return;
+    }{
+      dates(status.key);
+      return;
+
+    }
+  }
+
+  async function add(){
+    const database = getDatabase(firebaseConfig);
+    const databaseRef = ref(database, 'progress/' + uid );
+
+    const data ={
+      status: 1,
+    };
+
+    set(databaseRef, data)
+    .then( () => {
+      setOpen(false);
+    })
+    .catch((error) => {
+      alert('Houve um erro ao atualizar o status, por favor verifique' + error);
+    })
+  }
+
+  //fazendo a contagem
+  async function startCount(){
+    try{
+      const newCount = count + 1;
+      setCount(newCount);
+
+      await AsyncStorage.setItem('clickCount', newCount.toString());
+    } catch (error) {
+      console.error('Erro ao contar', error);
+    }
+  };
+
+
   setTimeout(() => {
     setTime(false);
   }, 15000);
@@ -92,6 +154,11 @@ export default function Basic() {
         <TouchableOpacity onPress={ () => navigate.goBack() } >
           <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
         </TouchableOpacity>
+          <View style={styles.progress} >
+            <Text style={styles.progressTitle}>NÍVEL</Text>
+            <Text style={styles.progressSubTitle}> {count} </Text>
+
+          </View>
       </View>
       
       <View  style={styles.content}>
@@ -101,7 +168,8 @@ export default function Basic() {
 
         {loading ? <ActivityIndicator color={theme.colors.secondary} size='large' /> : <></>}
       
-        {dados.map( (item) =>(
+        {/* {dados.map( (item) =>(
+          const 
           
           <TouchableOpacity
           key={item.key}
@@ -111,7 +179,14 @@ export default function Basic() {
           <Text style={styles.buttonText} > {item.key} </Text>
         </TouchableOpacity>
 
-        ))}
+        ))} */}
+
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={dados}
+          keyExtractor={(item) => item.id}
+          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} /> }
+        />
       
 
 
@@ -167,8 +242,14 @@ export default function Basic() {
                   style={styled.finishBack}
                   activeOpacity={1}
                 >
+                    {count === 3? 
+                      <Text style={styled.textFinishBack}>CARREGANDO...</Text>
+                      :
+                      <Text style={styled.textFinishBack}>CARREGANDO...</Text>
+                    } 
+
+
                     
-                  <Text style={styled.textFinishBack}>FINALIZAR</Text>
                 </TouchableOpacity>
                 :
                 <TouchableOpacity
@@ -176,7 +257,11 @@ export default function Basic() {
                   activeOpacity={0.8}
                 >
                     
-                  <Text style={styled.textFinish}>FINALIZAR</Text>
+                    {count === 3? 
+                      <Text style={styled.textFinish}>FINALIZAR...</Text>
+                      :
+                      <Text style={styled.textFinish}>PROSSEGUIR...</Text>
+                    } 
                 </TouchableOpacity>
 
 
@@ -187,6 +272,50 @@ export default function Basic() {
 
           </View>
         </View>
+      </Modal>
+
+      {/* ALERTA */}
+      <Modal
+        visible={openAlert}
+        animationType='none'
+        onRequestClose={ () => setOpenAlert(false)}  
+        transparent={true}   
+      >
+          <View style={styled.containerAlert} >
+            <View style={styled.contentAlert} >
+
+              <View style={styled.headerAlert} >
+              <TouchableOpacity
+                onPress={() => setOpenAlert(false)}
+              >
+                <Feather name='x-circle' size={34} color={'#f5f5f5'} />
+              </TouchableOpacity>
+              </View>
+
+              <View style={styled.textAlert} >
+                  <Text style={styled.titleAlert} >
+                  Parabéns, você concluiu o primeiro nível.
+                  </Text>
+                  {count == 1? 
+                    <Entypo name='progress-one' size={44} color={'#f5f5f5'} />
+                    :
+                    <></>
+                  }
+                  {count == 2?
+                    <Entypo name='progress-two' size={44} color={'#f5f5f5'} />
+                    :
+                    <></>
+                  }
+                  {count == 3?
+                    <Entypo name='progress-full' size={44} color={'#f5f5f5'} />
+                    :
+                    <></>
+                  }
+              </View>
+            
+            </View>
+
+          </View>
       </Modal>
       
    </View>
