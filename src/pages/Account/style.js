@@ -73,3 +73,44 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     }
 })
+
+export const styled = StyleSheet.create({
+    containerModal:{
+        flex:1,
+
+    },
+
+    headerModal:{
+        height: 60,
+        alignItems: 'center',
+        gap: 10,
+        
+        paddingLeft: 14,
+        paddingRight: 14,
+
+        flexDirection: 'row',
+
+        borderBottomWidth: 2,
+        borderBottomColor: theme.colors.primary
+    },
+
+    titleModal:{
+        fontSize: 22,
+        fontFamily: theme.fonts.title700,
+        color: theme.colors.primary,
+    },
+
+    contentModal:{
+        flex: 1,
+
+        paddingLeft: 14,
+        paddingRight: 14,
+        paddingTop: 20,
+    },
+
+    labelModal:{
+        fontSize: 18,
+        fontFamily: theme.fonts.text400,
+        color: theme.colors.primary
+    }
+})

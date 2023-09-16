@@ -2,9 +2,9 @@ import React, {useState, useContext} from 'react';
 import { View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { styles } from './style';
+import { styles, styled } from './style';
 import ProfileIdoso from '../../assets/7.jpg';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { theme } from '../../global/theme';
 
 
@@ -14,6 +14,8 @@ export default function Account() {
     
     const { user, SingOut } = useContext(AuthContext);
     const navigate = useNavigation();
+
+    const [open, setOpen] =  useState(false);
     
 return (
    <View style={styles.container} >
@@ -34,7 +36,7 @@ return (
                 <Text style={[styles.username, {textTransform: 'uppercase'}]}>Seus dados</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.menuItem} >
+            <TouchableOpacity style={styles.menuItem} onPress={ () => setOpen(true)} >
                 <AntDesign name='Safety' size={25} color={theme.colors.secondary} />
                 <Text style={[styles.username, {textTransform: 'uppercase'}]}>Politica e Privacidade</Text>
             </TouchableOpacity>
@@ -53,6 +55,31 @@ return (
                 </Text>
             </TouchableOpacity>
         </View>
+
+        {/* POLITICA DE PRIVACIDADE */}
+        <Modal
+            visible={open}
+            animationType='fade'
+            onRequestClose={ () => setOpen(false)}
+        >
+            <View style={styled.containerModal}>
+                <View style={styled.headerModal}>
+                    <TouchableOpacity onPress={ () => setOpen(false)} activeOpacity={0.8}>  
+                     <Feather name='arrow-left-circle' size={30} color={theme.colors.primary} />
+                    </TouchableOpacity>
+                    <Text style={styled.titleModal}>
+                        Política de privacidade
+                    </Text>
+
+                </View>
+
+                <View style={styled.contentModal}>
+                 <Text  style={styled.labelModal}>
+                    politica de privacidade
+                 </Text>
+                </View>
+            </View>
+        </Modal>
    </View>
   );
 }
