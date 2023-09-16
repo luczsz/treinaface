@@ -14,6 +14,7 @@ import Registre from '../pages/Registre';
 import Basic from '../pages/Basic';
 import Intermediary from '../pages/Intermediary';
 import Difficult from '../pages/Difficult';
+import Notifications from '../pages/Notifications';
 
 
 export default function AppRoutes(){
@@ -128,6 +129,14 @@ export default function AppRoutes(){
             <AppStack.Screen 
                 name='Registros' 
                 component={Registre}
+                options={{
+                    headerShown: false,
+                }}
+
+            />
+            <AppStack.Screen 
+                name='Notificar' 
+                component={Notifications}
                 options={{
                     headerShown: false,
                 }}

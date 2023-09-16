@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import { View, Text, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { AuthContext } from '../../contexts/auth';
 
@@ -7,10 +8,12 @@ import { styles } from './style';
 import { Feather } from '@expo/vector-icons';
 import ProfileIdoso from '../../assets/7.jpg';
 import { theme } from '../../global/theme';
+import { TouchableOpacity } from 'react-native';
 
-export default function Header({nivel}) {
+export default function Header({nivel, aviso}) {
 
     const { user } = useContext(AuthContext);
+    const navigation = useNavigation();
 
     const [formattedDate, setFormattedDate] = useState('');
 
@@ -49,8 +52,22 @@ export default function Header({nivel}) {
                 </Text>
                 
             </View>
+
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={ () => aviso()}
+              style={{marginRight: 10,}}
+            >
+              <Feather name='alert-octagon' size={34} color={theme.colors.secondary}/>
+            </TouchableOpacity>
             
-            <Feather name='bell' size={34} color={theme.colors.secondary}/>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={ () => navigation.navigate('Notificar')}
+            >
+              <Feather name='bell' size={34} color={theme.colors.secondary}/>
+            </TouchableOpacity>
+            
         </View>
         <View style={styles.clock} >
             <Text style={{ fontSize: 22, fontFamily:theme.fonts.title700, color: theme.colors.secondary}} > HOJE</Text>

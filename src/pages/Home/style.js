@@ -21,5 +21,34 @@ export const styles = StyleSheet.create({
         fontFamily: theme.fonts.title700,
         color: theme.colors.white090,
         textTransform: 'uppercase'
+    },
+
+    avisos:{
+        borderWidth: 2,
+        height: 100,
+        marginTop: 10,
+
+        padding: 18,
+    }
+})
+
+export const styled = StyleSheet.create({
+    containerModal:{
+        backgroundColor: theme.colors.overlay,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    contentModal:{
+        width: '80%',
+        padding: 20,
+
+        backgroundColor: theme.colors.line,
+        borderRadius: 12,
+    },
+    title:{
+        fontSize: 18,
+        fontFamily: theme.fonts.title700,
+        color: theme.colors.white090,
     }
 })

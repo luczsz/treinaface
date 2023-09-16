@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Modal } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useNavigation } from '@react-navigation/native'
 
 
-import { styles } from './style';
+import { styles, styled } from './style';
 import Header from '../../components/Header';
 import { theme } from '../../global/theme';
 
@@ -13,6 +13,7 @@ export default function Home() {
 
   const navigate = useNavigation();
   const [count, setCount] = useState(0);
+  const [open, setOpen] = useState(false);
 
   useEffect( () => {
     async function loadCount(){
@@ -28,9 +29,13 @@ export default function Home() {
     loadCount();
   },[])
 
+  function alerts(){
+    setOpen(true);
+  }
+
   return (
    <View>
-        <Header nivel={count} />
+        <Header nivel={count} aviso={alerts} />
         <View style={styles.content} >
 
         <Text style={{fontSize: 22, fontFamily: theme.fonts.text400, color: theme.colors.secondary, marginBottom: 10,}}>
@@ -66,6 +71,29 @@ export default function Home() {
               Difícil
             </Text>
           </TouchableOpacity>
+
+          <Modal
+            transparent={true}
+            visible={open}
+            animationType='fade'
+            onRequestClose={ () => setOpen(false)}
+          >
+              <TouchableOpacity onPress={() => setOpen(false)} style={styled.containerModal} > 
+                <View style={styled.contentModal} >
+                <Text style={styled.title} >ATENÇÃO USUARIO: {`\n`}</Text>
+                  <Text style={styled.title} >  
+                  - Esse aplicativo não substitui ou dispensa
+                    as sessões de fonoaudiologia, mas permite
+                    auxiliar o usuário no processo terapêutico
+                    e de fortalecimento muscular.{`\n`}
+                  </Text>
+                  <Text style={styled.title} >
+                  - Em caso de duvidas, é recomendado
+                    buscar ajuda profissional 
+                  </Text>
+                </View>
+              </TouchableOpacity>
+          </Modal>
 
 
         </View>
