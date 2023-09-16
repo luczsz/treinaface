@@ -3,7 +3,7 @@ import { theme } from '../global/theme';
 export const slides = [
     {
       key: '1',
-      title: 'Seja Bem vindo(a)',
+      title: 'Seja bem vindo(a)',
       text: 'É muito bom te ver por aqui!',
       image: require('../assets/4.png'),
       backgroundColor: theme.colors.primary,
@@ -19,7 +19,7 @@ export const slides = [
       key: '3',
       title: 'TREINAFACE',
       text: 'é um aplicativo de Motricidade Orofacial com uma variedade de exercícios terapêuticos miofuncionais que promovem o fortalecimento muscular e estabilidade das estruturas orofaciais em usuários de próteses dentárias',
-      image: require('../assets/3.png'),
+      image: require('../assets/9.png'),
       backgroundColor: theme.colors.tercery,
     }
   ];

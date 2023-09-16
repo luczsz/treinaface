@@ -40,13 +40,13 @@ export const styles = StyleSheet.create({
 
     title:{
         fontSize: 22,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
         color: theme.colors.secondary,
         textTransform: 'uppercase',
     },
     subTitle:{
         fontSize: 16,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.text400,
         color: theme.colors.highlight,
         
     },

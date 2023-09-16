@@ -53,8 +53,8 @@ export default function Header({nivel}) {
             <Feather name='bell' size={34} color={theme.colors.secondary}/>
         </View>
         <View style={styles.clock} >
-            <Text style={{ fontSize: 22, fontWeight: 'bold', color: theme.colors.secondary}} > HOJE</Text>
-            <Text style={{ fontSize: 18}} > {formattedDate} </Text>
+            <Text style={{ fontSize: 22, fontFamily:theme.fonts.title700, color: theme.colors.secondary}} > HOJE</Text>
+            <Text style={{ fontSize: 18, fontFamily: theme.fonts.text400}} > {formattedDate} </Text>
 
         </View>
    </View>

@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { slides } from '../../components/slider';
 import Onbordning from '../../components/Onbordning';
+import { theme } from '../../global/theme';
 
 
 export default function Splash() {
@@ -23,8 +24,8 @@ export default function Splash() {
             dotStyle={{
                 backgroundColor: '#f5f5f5'
             }}
-            renderNextButton={ () => <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>Próximo</Text> }
-            renderDoneButton={ () => <Text style={{color: 'white', fontSize: 18, fontWeight: 'bold'}}>Entrar</Text> }
+            renderNextButton={ () => <Text style={{color: 'white', fontSize: 18,fontFamily: theme.fonts.title700}}>Próximo</Text> }
+            renderDoneButton={ () => <Text style={{color: 'white', fontSize: 18, fontFamily: theme.fonts.title700}}>Entrar</Text> }
             onDone={ () => navigation.navigate('Login')}
         />
   );

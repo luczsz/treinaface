@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { theme } from '../../global/theme';
 
 export default function Onbordning({ item }) {
  return (
@@ -27,14 +28,14 @@ export const styles = StyleSheet.create({
         width: '80%',
         color: '#f5f5f5',
         fontSize: 35,
-        fontWeight: 'bold',
         marginTop: 10,
+        fontFamily: theme.fonts.title700,
     },
     text:{
         width: '80%',
         color: '#f5f5f5',
         fontSize: 22,
-
+        fontFamily: theme.fonts.text400,
         marginTop: 8,
     }
 })

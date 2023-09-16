@@ -31,7 +31,7 @@ export default function Progress() {
         <View style={styles.header} >
             <MaterialCommunityIcons name='progress-star' size={34} color={theme.colors.secondary} />
 
-            <Text style={{ fontSize: 22, fontWeight: 'bold', color: theme.colors.secondary }} >
+            <Text style={{ fontSize: 22, fontFamily: theme.fonts.title700, color: theme.colors.secondary }} >
                 Seu progresso
             </Text>
         </View>

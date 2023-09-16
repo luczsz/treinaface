@@ -30,11 +30,12 @@ export const styles = StyleSheet.create({
 
     username:{
         fontSize:22,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
     },
     usernivel:{
         fontSize:14,
-        color: theme.colors.secondary
+        color: theme.colors.secondary,
+        fontFamily: theme.fonts.text400,
     },
 
     clock:{

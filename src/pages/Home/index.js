@@ -33,7 +33,7 @@ export default function Home() {
         <Header nivel={count} />
         <View style={styles.content} >
 
-        <Text style={{fontSize: 22, fontWeight: '500', color: theme.colors.secondary, marginBottom: 10,}}>
+        <Text style={{fontSize: 22, fontFamily: theme.fonts.text400, color: theme.colors.secondary, marginBottom: 10,}}>
         Escolha uma categoria abaixo e vamos começar ?
         </Text>
 
@@ -52,7 +52,7 @@ export default function Home() {
             style={[styles.button, {backgroundColor: theme.colors.secondary }]}
           >
             <Text style={styles.title}>
-              Intermediario
+              Intermediário
             </Text>
           </TouchableOpacity>
 

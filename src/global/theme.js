@@ -15,4 +15,9 @@ export const theme = {
 
         white090: '#F5F5F8FE',
       },
+
+      fonts: {
+        title700: 'Ubuntu_700Bold',
+        text400: 'Ubuntu_400Regular',
+      }
 };

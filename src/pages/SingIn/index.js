@@ -104,7 +104,7 @@ export default function SingIn() {
             </TouchableOpacity>
 
             <View style={{flexDirection: 'row', gap: 8, marginTop: 10,}}>
-                <Text>Ainda não tem uma conta? </Text>
+                <Text style={{fontFamily: theme.fonts.text400,}}>Ainda não tem uma conta? </Text>
                 <TouchableOpacity 
                   activeOpacity={0.8}
                   onPress={ () => navigation.navigate('Cadastro')}

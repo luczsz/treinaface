@@ -43,7 +43,7 @@ export default function SingUp() {
               />
 
           </TouchableOpacity>
-            <Text style={{color: theme.colors.secondary, fontSize: 20, fontWeight: 'bold'}}  >Voltar</Text>
+            <Text style={{color: theme.colors.secondary, fontSize: 20, fontFamily: theme.fonts.title700}}  >Voltar</Text>
         </View>
         
         <View style={styles.content} >

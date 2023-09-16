@@ -56,7 +56,7 @@ export const styles = StyleSheet.create({
     },
     submitText:{
         fontSize: 22,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
         color: theme.colors.white090,
         textTransform: 'uppercase'
     },
@@ -64,10 +64,11 @@ export const styles = StyleSheet.create({
     title:{
         color: theme.colors.secondary,
         fontSize: 16,
+        fontFamily: theme.fonts.text400,
     }, 
     subTitle:{
         color: theme.colors.secondary,
         fontSize: 16,
-        fontWeight: 'bold'
+        fontFamily: theme.fonts.title700,
     }, 
 })

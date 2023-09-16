@@ -31,13 +31,14 @@ export const styles = StyleSheet.create({
     },
     username:{
         fontSize: 22,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
         color: theme.colors.secondary
     },
     useremail:{
         fontSize: 16,
         color: '#b5b5b5',
         paddingBottom: 10,
+        fontFamily: theme.fonts.text400,
     },
 
 

@@ -24,10 +24,11 @@ export const styles = StyleSheet.create({
     title:{
         fontSize: 35,
         color: theme.colors.secondary,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
     },
     subTitle:{
         fontSize: 35,
+        fontFamily: theme.fonts.text400,
         color: theme.colors.secondary,
     },
     foget:{
@@ -36,11 +37,12 @@ export const styles = StyleSheet.create({
         width: '80%',
         marginTop: 10,
         marginBottom: 12,
+        fontFamily: theme.fonts.text400,
     },
     singon:{
         color: theme.colors.secondary,
         fontSize: 16,
-        fontWeight: 'bold'
+        fontFamily: theme.fonts.title700,
     },  
 
 
@@ -68,7 +70,7 @@ export const styles = StyleSheet.create({
 
     bntText:{
         fontSize: 22,
-        fontWeight: 'bold',
+        fontFamily: theme.fonts.title700,
         color: theme.colors.white090,
     },
 })
