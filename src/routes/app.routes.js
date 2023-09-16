@@ -128,6 +128,9 @@ export default function AppRoutes(){
             <AppStack.Screen 
                 name='Registros' 
                 component={Registre}
+                options={{
+                    headerShown: false,
+                }}
 
             />
         </AppStack.Navigator>
