@@ -17,7 +17,9 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 import { useNavigation } from '@react-navigation/native';
 
-export default function Basic() {
+const greenBg = theme.colors.secondary;
+
+export default function Intermediary() {
 
   const navigate = useNavigation();
   const { user } = useContext(AuthContext);
@@ -51,7 +53,7 @@ export default function Basic() {
   useEffect( () => {
       async function loadingDados(){
         const database = getDatabase(firebaseConfig);
-        const niveis = ref(database, 'niveis/um');
+        const niveis = ref(database, 'niveis/dois');
 
         onValue(niveis, (snap) => {
           setDados([]);
@@ -92,7 +94,7 @@ export default function Basic() {
 
   async function dates(key){
         const database = getDatabase(firebaseConfig);
-        const niveis = ref(database, `niveis/um/${key}`);
+        const niveis = ref(database, `niveis/dois/${key}`);
 
         onValue(niveis, (snap) => {
           setTitulo(snap.val().titulo);
@@ -210,7 +212,7 @@ export default function Basic() {
           showsVerticalScrollIndicator={false}
           data={dados}
           keyExtractor={(item) => item.id}
-          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} /> }
+          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} color={greenBg} /> }
         />
       
 
@@ -229,7 +231,7 @@ export default function Basic() {
             <TouchableOpacity
               onPress={ () => setOpen(false)}
             >
-              <Feather name='arrow-left-circle' size={34} color={theme.colors.primary} />
+              <Feather name='arrow-left-circle' size={34} color={theme.colors.secondary} />
             </TouchableOpacity>
           </View>
           <View style={styled.modalContent} >

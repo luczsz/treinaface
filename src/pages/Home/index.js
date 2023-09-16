@@ -50,6 +50,7 @@ export default function Home() {
           <TouchableOpacity
             activeOpacity={0.7}
             style={[styles.button, {backgroundColor: theme.colors.secondary }]}
+            onPress={ () => navigate.navigate('Two')}
           >
             <Text style={styles.title}>
               Intermediário

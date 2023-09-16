@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
     },
 
     progress:{
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.secondary,
         padding: 10,
         borderRadius: 12,
 
@@ -85,7 +85,7 @@ export const styled = StyleSheet.create({
     },
     modalContent:{
         flex: 1,
-        backgroundColor: theme.colors.primary,
+        backgroundColor: theme.colors.secondary,
         padding: 10,
 
         borderRadius: 12,
@@ -104,7 +104,7 @@ export const styled = StyleSheet.create({
         justifyContent: 'center',
 
         borderWidth: 6,
-        borderColor: theme.colors.primary,
+        borderColor: theme.colors.secondary,
         borderRadius: 10,
     },
 
@@ -127,7 +127,7 @@ export const styled = StyleSheet.create({
     textFinish:{
         fontSize: 22,
         fontFamily: theme.fonts.title700,
-        color: theme.colors.primary,
+        color: theme.colors.secondary,
     },
     finishBack:{
         backgroundColor: theme.colors.tercery,

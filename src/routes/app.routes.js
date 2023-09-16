@@ -12,6 +12,7 @@ import Registre from '../pages/Registre';
 
 //Niveis
 import Basic from '../pages/Basic';
+import Intermediary from '../pages/Intermediary';
 
 
 export default function AppRoutes(){
@@ -105,6 +106,13 @@ export default function AppRoutes(){
             <AppStack.Screen 
                 name='One' 
                 component={Basic}
+                options={{
+                    headerShown: false,
+                }} 
+            />
+            <AppStack.Screen 
+                name='Two' 
+                component={Intermediary}
                 options={{
                     headerShown: false,
                 }} 

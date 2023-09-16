@@ -4,7 +4,6 @@ import { theme } from '../../global/theme';
 
 export const styles = StyleSheet.create({
     button:{
-        backgroundColor: 'blue',
         height: 120,
         borderRadius: 12,
 

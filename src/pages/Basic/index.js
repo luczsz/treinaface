@@ -17,6 +17,8 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 import { useNavigation } from '@react-navigation/native';
 
+const blueBg = theme.colors.primary;
+
 export default function Basic() {
 
   const navigate = useNavigation();
@@ -210,7 +212,7 @@ export default function Basic() {
           showsVerticalScrollIndicator={false}
           data={dados}
           keyExtractor={(item) => item.id}
-          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} /> }
+          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} color={blueBg}/> }
         />
       
 
