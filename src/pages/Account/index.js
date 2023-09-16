@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, Button, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles } from './style';
