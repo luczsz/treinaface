@@ -17,7 +17,9 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 import { useNavigation } from '@react-navigation/native';
 
-export default function Basic() {
+const yellowBg = theme.colors.tercery;
+
+export default function Difficult() {
 
   const navigate = useNavigation();
   const { user } = useContext(AuthContext);
@@ -51,7 +53,7 @@ export default function Basic() {
   useEffect( () => {
       async function loadingDados(){
         const database = getDatabase(firebaseConfig);
-        const niveis = ref(database, 'niveis/um');
+        const niveis = ref(database, 'niveis/tres');
 
         onValue(niveis, (snap) => {
           setDados([]);
@@ -92,7 +94,7 @@ export default function Basic() {
 
   async function dates(key){
         const database = getDatabase(firebaseConfig);
-        const niveis = ref(database, `niveis/um/${key}`);
+        const niveis = ref(database, `niveis/tres/${key}`);
 
         onValue(niveis, (snap) => {
           setTitulo(snap.val().titulo);
@@ -177,7 +179,7 @@ export default function Basic() {
    <View style={styles.container}>
       <View  style={styles.header}>
         <TouchableOpacity onPress={ () => /* remove() */  navigate.goBack()  } >
-          <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
+          <Feather name='arrow-left' size={34} color={theme.colors.tercery} />
         </TouchableOpacity>
           <View style={styles.progress} >
             <Text style={styles.progressTitle}>NÍVEL</Text>
@@ -210,7 +212,7 @@ export default function Basic() {
           showsVerticalScrollIndicator={false}
           data={dados}
           keyExtractor={(item) => item.id}
-          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} /> }
+          renderItem={ ({item}) => <ListSelect data={item} infor={transfor} color={yellowBg} /> }
         />
       
 
@@ -229,7 +231,7 @@ export default function Basic() {
             <TouchableOpacity
               onPress={ () => setOpen(false)}
             >
-              <Feather name='arrow-left-circle' size={34} color={theme.colors.primary} />
+              <Feather name='arrow-left-circle' size={34} color={theme.colors.tercery} />
             </TouchableOpacity>
           </View>
           <View style={styled.modalContent} >

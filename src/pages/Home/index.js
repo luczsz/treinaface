@@ -60,6 +60,7 @@ export default function Home() {
           <TouchableOpacity
             activeOpacity={0.7}
             style={[styles.button, {backgroundColor: theme.colors.tercery }]}
+            onPress={ () => navigate.navigate('Tree')}
           >
             <Text style={styles.title}>
               Difícil

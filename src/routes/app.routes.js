@@ -13,6 +13,7 @@ import Registre from '../pages/Registre';
 //Niveis
 import Basic from '../pages/Basic';
 import Intermediary from '../pages/Intermediary';
+import Difficult from '../pages/Difficult';
 
 
 export default function AppRoutes(){
@@ -113,6 +114,13 @@ export default function AppRoutes(){
             <AppStack.Screen 
                 name='Two' 
                 component={Intermediary}
+                options={{
+                    headerShown: false,
+                }} 
+            />
+            <AppStack.Screen 
+                name='Tree' 
+                component={Difficult}
                 options={{
                     headerShown: false,
                 }} 
