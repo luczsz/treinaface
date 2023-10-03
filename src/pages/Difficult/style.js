@@ -17,12 +17,12 @@ export const styles = StyleSheet.create({
         paddingRight: 14,
 
         borderBottomWidth: 2,
-        borderBottomColor: theme.colors.tercery
+        borderBottomColor: theme.colors.secondary100
     },
     title:{
         fontSize: 18,
         fontFamily: theme.fonts.title700,
-        color: theme.colors.tercery,
+        color: theme.colors.secondary100,
         marginBottom: 20,
     },
     content:{
@@ -47,7 +47,7 @@ export const styles = StyleSheet.create({
     },
 
     progress:{
-        backgroundColor: theme.colors.tercery,
+        backgroundColor: theme.colors.secondary100,
         padding: 10,
         borderRadius: 12,
 
@@ -85,14 +85,14 @@ export const styled = StyleSheet.create({
     },
     modalContent:{
         flex: 1,
-        backgroundColor: theme.colors.tercery,
+        backgroundColor: theme.colors.secondary100,
         padding: 10,
 
         borderRadius: 12,
     },
 
     modalUrl:{
-        backgroundColor: theme.colors.tercery,
+        backgroundColor: theme.colors.secondary100,
         width: '80%',
         height: '70%',
         zIndex: 99,
@@ -104,7 +104,7 @@ export const styled = StyleSheet.create({
         justifyContent: 'center',
 
         borderWidth: 6,
-        borderColor: theme.colors.tercery,
+        borderColor: theme.colors.secondary100,
         borderRadius: 10,
     },
 
@@ -127,10 +127,10 @@ export const styled = StyleSheet.create({
     textFinish:{
         fontSize: 22,
         fontFamily: theme.fonts.title700,
-        color: theme.colors.tercery,
+        color: theme.colors.secondary100,
     },
     finishBack:{
-        backgroundColor: theme.colors.tercery,
+        backgroundColor: theme.colors.secondary100,
         marginTop: 20,
         height: 60,
 

@@ -24,8 +24,8 @@ export default function Splash() {
             dotStyle={{
                 backgroundColor: '#f5f5f5'
             }}
-            renderNextButton={ () => <Text style={{color: 'white', fontSize: 18,fontFamily: theme.fonts.title700}}>Próximo</Text> }
-            renderDoneButton={ () => <Text style={{color: 'white', fontSize: 18, fontFamily: theme.fonts.title700}}>Entrar</Text> }
+            renderNextButton={ () => <Text style={{color: theme.colors.secondary100, fontSize: 18,fontFamily: theme.fonts.title700}}>Próximo</Text> }
+            renderDoneButton={ () => <Text style={{color: theme.colors.secondary100, fontSize: 18, fontFamily: theme.fonts.title700}}>Entrar</Text> }
             onDone={ () => navigation.navigate('Login')}
         />
   );

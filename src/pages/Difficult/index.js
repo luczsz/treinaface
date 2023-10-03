@@ -17,7 +17,7 @@ import { getDatabase, ref, onValue, set } from 'firebase/database';
 
 import { useNavigation } from '@react-navigation/native';
 
-const yellowBg = theme.colors.tercery;
+const yellowBg = theme.colors.secondary100;
 
 export default function Difficult() {
 
@@ -179,7 +179,7 @@ export default function Difficult() {
    <View style={styles.container}>
       <View  style={styles.header}>
         <TouchableOpacity onPress={ () => /* remove() */  navigate.goBack()  } >
-          <Feather name='arrow-left' size={34} color={theme.colors.tercery} />
+          <Feather name='arrow-left' size={34} color={theme.colors.secondary100} />
         </TouchableOpacity>
           <View style={styles.progress} >
             <Text style={styles.progressTitle}>NÍVEL</Text>

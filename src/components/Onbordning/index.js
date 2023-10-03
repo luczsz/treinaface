@@ -26,14 +26,14 @@ export const styles = StyleSheet.create({
 
     title:{
         width: '80%',
-        color: '#f5f5f5',
+        color: theme.colors.secondary100,
         fontSize: 35,
         marginTop: 10,
         fontFamily: theme.fonts.title700,
     },
     text:{
         width: '80%',
-        color: '#f5f5f5',
+        color: theme.colors.secondary100,
         fontSize: 22,
         fontFamily: theme.fonts.text400,
         marginTop: 8,
