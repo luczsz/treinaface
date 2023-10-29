@@ -282,7 +282,7 @@ export default function Difficult() {
                 <TouchableOpacity
                   style={styled.finish}
                   activeOpacity={0.8}
-                  onPress={ () => {count === 3? alert('ok') : startCount() }}
+                  onPress={ () => {count === 3? setOpen(false) : startCount() }}
                 >
                     
                     {count === 2? 
