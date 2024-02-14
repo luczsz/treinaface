@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import { View, Text, Button, Image, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, Button, Image, TouchableOpacity, Modal, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { styles, styled } from './style';
@@ -73,11 +73,45 @@ return (
 
                 </View>
 
-                <View style={styled.contentModal}>
+                <ScrollView style={styled.contentModal}>
                  <Text  style={styled.labelModal}>
-                    politica de privacidade
+                 Esta Política de Privacidade descreve como as informações pessoais são coletadas, usadas e compartilhadas quando você utiliza este aplicativo.{`\n`}{`\n`}
+
+**Coleta e Uso de Informações Pessoais**{`\n`}{`\n`}
+
+Ao utilizar este aplicativo, podemos coletar informações sobre você, incluindo, mas não se limitando a:{`\n`}
+- Informações de identificação pessoal, como nome, endereço de e-mail e outras informações que você voluntariamente nos fornece ao usar o aplicativo.{`\n`}
+- Informações sobre como você utiliza o aplicativo, como quais recursos você acessa e como interage com o aplicativo.{`\n`}{`\n`}
+
+Usamos as informações coletadas para:{`\n`}
+- Fornecer e manter o funcionamento do aplicativo.{`\n`}
+- Personalizar sua experiência de usuário e entender melhor suas necessidades.{`\n`}
+- Enviar notificações importantes relacionadas ao uso do aplicativo.{`\n`}
+- Analisar tendências e melhorar o desempenho e a qualidade do aplicativo.{`\n`}
+
+**Compartilhamento de Informações Pessoais**{`\n`}{`\n`}
+
+Não compartilhamos suas informações pessoais com terceiros, exceto quando necessário para fornecer os serviços oferecidos pelo aplicativo ou quando exigido por lei.{`\n`}
+
+**Segurança**{`\n`}{`\n`}
+
+Implementamos medidas de segurança razoáveis para proteger as informações pessoais contra acesso não autorizado, alteração, divulgação ou destruição.{`\n`}
+
+**Links para Outros Sites**{`\n`}{`\n`}
+
+Este aplicativo pode conter links para outros sites. Não somos responsáveis pelas práticas de privacidade desses outros sites e encorajamos você a ler as políticas de privacidade deles.{`\n`}
+
+**Alterações a esta Política de Privacidade**{`\n`}{`\n`}
+
+Podemos atualizar esta Política de Privacidade de tempos em tempos. Recomendamos que você revise esta página periodicamente para estar ciente de quaisquer alterações.{`\n`}
+
+**Contato**{`\n`}{`\n`}
+
+Se você tiver alguma dúvida ou preocupação sobre esta Política de Privacidade, entre em contato conosco em francisco.lucs@gmail.com.
                  </Text>
-                </View>
+                </ScrollView>
+
+
             </View>
         </Modal>
    </View>

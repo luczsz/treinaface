@@ -76,7 +76,8 @@ export const styled = StyleSheet.create({
     },
     modalHeader:{
         height: 300,
-        
+        flexDirection: 'row',
+        gap: 10,
         paddingTop: 23,
         paddingLeft: 14,
         paddingRight: 14,
@@ -108,6 +109,13 @@ export const styled = StyleSheet.create({
         borderRadius: 10,
     },
 
+    title:{
+        fontSize: 22,
+        fontFamily: theme.fonts.title700,
+        color: theme.colors.primary,
+        width: 350,
+    },
+    
     description:{
         fontSize: 22,
         fontFamily: theme.fonts.title700,

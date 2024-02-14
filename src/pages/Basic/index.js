@@ -181,11 +181,6 @@ export default function Basic() {
         <TouchableOpacity onPress={ () => /* remove() */  navigate.goBack()  } >
           <Feather name='arrow-left' size={34} color={theme.colors.secondary} />
         </TouchableOpacity>
-          <View style={styles.progress} >
-            <Text style={styles.progressTitle}>NÍVEL</Text>
-            <Text style={styles.progressSubTitle}> {count} </Text>
-
-          </View>
       </View>
       
       <View  style={styles.content}>
@@ -233,6 +228,9 @@ export default function Basic() {
             >
               <Feather name='arrow-left-circle' size={34} color={theme.colors.primary} />
             </TouchableOpacity>
+            <Text style={styled.title} >
+                {titulo}
+            </Text>
           </View>
           <View style={styled.modalContent} >
             
@@ -258,6 +256,7 @@ export default function Basic() {
               <Text style={styled.description} >
                 {titulo}
               </Text>
+              
               <View>
               {phrafe.map((phrase, index) => (
                   <Text key={index} style={styled.description} >{phrase}</Text>

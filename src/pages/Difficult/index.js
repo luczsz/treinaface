@@ -181,11 +181,6 @@ export default function Difficult() {
         <TouchableOpacity onPress={ () => /* remove() */  navigate.goBack()  } >
           <Feather name='arrow-left' size={34} color={theme.colors.secondary100} />
         </TouchableOpacity>
-          <View style={styles.progress} >
-            <Text style={styles.progressTitle}>NÍVEL</Text>
-            <Text style={styles.progressSubTitle}> {count} </Text>
-
-          </View>
       </View>
       
       <View  style={styles.content}>
@@ -320,7 +315,7 @@ export default function Difficult() {
 
               <View style={styled.textAlert} >
                   <Text style={styled.titleAlert} >
-                  Parabéns, você concluiu o primeiro nível.
+                  Parabéns, você concluiu o último nível.
                   </Text>
                   {count == 1? 
                     <Entypo name='progress-one' size={44} color={'#f5f5f5'} />
